@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files_bonus.c                                      :+:      :+:    :+:   */
+/*   files.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcaffere <bcaffere@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 16:14:14 by bcaffere          #+#    #+#             */
-/*   Updated: 2022/03/22 13:04:14 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:15:03 by fdaumas          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	get_infile(char **argv, t_ppxb *pipex)
 
 void	get_outfile(char *argv, t_ppxb *pipex)
 {
-	pipex->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC);
+	pipex->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (pipex->outfile < 0)
 		msg_error(ERR_OUTFILE);
 }

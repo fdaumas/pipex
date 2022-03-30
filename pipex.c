@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.c                                      :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcaffere <bcaffere@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 16:02:17 by bcaffere          #+#    #+#             */
-/*   Updated: 2022/03/22 14:12:12 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:37:18 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/pipex_bonus.h"
+#include <sys/wait.h>
 
 static void	creat_pipes(t_ppxb *pipex)
 {
@@ -28,13 +29,17 @@ static void	creat_pipes(t_ppxb *pipex)
 void	close_pipes(t_ppxb *pipex)
 {
 	int	i;
+	int	y;
 
 	i = 0;
+	y = -1;
 	while (i < (pipex->pipe_nmbs))
 	{
 		close(pipex->pipe[i]);
 		i++;
 	}
+	while (++y < pipex->cmd_nmbs)
+		wait(0);
 }
 
 int	main(int argc, char *argv[], char *envp[])

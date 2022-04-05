@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:17:13 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/03/22 13:34:19 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/03/29 13:40:18 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@ size_t	ft_strlen(const char *str)
 	while (str[index] != '\0')
 		index++;
 	return (index);
-} 
+}

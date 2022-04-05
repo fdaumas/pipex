@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:20:39 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:20:44 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/04/05 15:30:05 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	get_infile(char **argv, t_ppxb *pipex)
 
 void	get_outfile(char *argv, t_ppxb *pipex)
 {
-	pipex->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC);
+	pipex->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (pipex->outfile < 0)
 		msg_error(ERR_OUTFILE);
 }

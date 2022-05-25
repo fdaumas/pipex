@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:21:37 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:21:40 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:12:00 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,10 @@ void	msg_pipe(char *arg)
 void	msg_error(char *err)
 {
 	perror(err);
-	exit (1);
+}
+
+void	msg_error_exit(char *err)
+{
+	perror(err);
+	exit(0);
 }

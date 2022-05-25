@@ -17,21 +17,20 @@ FUNC 		=	$(addprefix $(FUNC_DIR), $(FUNC_SRCS))
 OBJ_F		=	$(FUNC:.c=.o)
 
 %.o: %.c $(HEADER) Makefile
-				@${CC} ${FLAGS} -c $< -o $@
+				${CC} ${FLAGS} -c $< -o $@
 
 $(NAME):		$(OBJ_F) $(OBJ)
-				@$(CC) $(OBJ_F) $(OBJ) -o $(NAME)
+				$(CC) $(OBJ_F) $(OBJ) -o $(NAME)
 
 all:			$(NAME)
 
 clean:
-				@$(RM) $(OBJ_F)
-				@$(RM) $(OBJ)
+				$(RM) $(OBJ_F)
+				$(RM) $(OBJ)
 
 fclean:			clean
-				@$(RM) $(NAME)
+				$(RM) $(NAME)
 
 re:				fclean all
 
-.PHONY:		all clean fclean bonus re
-
+.PHONY:		all clean fclean re

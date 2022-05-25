@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:24:52 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:29:33 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:36:34 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	close_pipes(t_ppxb *pipex)
 		i++;
 	}
 	while (++y < pipex->cmd_nmbs)
-		wait(0);
+		waitpid(-1, 0, 0);
 }
 
 int	main(int argc, char *argv[], char *envp[])
@@ -64,7 +64,6 @@ int	main(int argc, char *argv[], char *envp[])
 	while (++(pipex.idx) < pipex.cmd_nmbs)
 		child(pipex, argv, envp);
 	close_pipes(&pipex);
-	waitpid(-1, NULL, 0);
 	parent_free(&pipex);
 	return (0);
 }

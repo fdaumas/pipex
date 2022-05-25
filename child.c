@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:21:19 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:21:22 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/25 13:49:20 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static char	*get_cmd(char **paths, char *cmd)
 	char	*tmp;
 	char	*command;
 
+	if (access(cmd, 0) == 0)
+		return (cmd);
 	while (*paths)
 	{
 		tmp = ft_strjoin(*paths, "/");
@@ -32,8 +34,10 @@ static char	*get_cmd(char **paths, char *cmd)
 
 static void	sub_dup2(int zero, int first)
 {
-	dup2(zero, 0);
-	dup2(first, 1);
+	if (dup2(zero, 0) == -1)
+		msg_error_exit(ERR_DUP);
+	if (dup2(first, 1) == -1)
+		msg_error_exit(ERR_DUP);
 }
 
 void	child(t_ppxb p, char **argv, char **envp)
@@ -56,6 +60,7 @@ void	child(t_ppxb p, char **argv, char **envp)
 			child_free(&p);
 			exit(1);
 		}
-		execve(p.cmd, p.cmd_args, envp);
+		if (execve(p.cmd, p.cmd_args, envp) == -1)
+			msg_error(ERR_EXEC);
 	}
 }

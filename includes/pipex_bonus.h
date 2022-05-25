@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:21:01 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:21:05 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/25 13:51:09 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@
 # define ERR_INPUT "Invalid number of arguments.\n"
 # define ERR_PIPE "Pipe"
 # define ERR_ENVP "Environment"
+# define ERR_DUP "Dup2 not work"
 # define ERR_CMD "Command not found: "
-# define ERR_HEREDOC "here_doc"
+# define ERR_EXEC "Execution fail"
 
 typedef struct s_ppxb
 {
@@ -56,10 +57,10 @@ typedef struct s_ppxb
 	int		idx;
 }t_ppxb;
 
-/* pipex_bonus.c */
+/* pipex.c */
 void	close_pipes(t_ppxb *pipex);
 
-/* child_bonus.c */
+/* child.c */
 void	child(t_ppxb pipex, char **argv, char **envp);
 
 /* free.c */
@@ -67,13 +68,14 @@ void	parent_free(t_ppxb *pipex);
 void	child_free(t_ppxb *pipex);
 void	pipe_free(t_ppxb *pipex);
 
-/* files_bonus.c */
+/* files.c */
 char	*find_path(char **envp);
 void	get_infile(char **argv, t_ppxb *pipex);
 void	get_outfile(char *argv, t_ppxb *pipex);
 
-/* error_bonus.c */
+/* error.c */
 void	msg_error(char *err);
+void	msg_error_exit(char *err);
 void	msg_pipe(char *arg);
 int		msg(char *err);
 

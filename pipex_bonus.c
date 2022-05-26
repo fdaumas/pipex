@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:24:52 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/05/27 01:47:48 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:36:34 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	t_ppxb	pipex;
 
-	if (argc != 5)
+	if (argc < 5)
 		return (msg(ERR_INPUT));
 	get_infile(argv, &pipex);
 	get_outfile(argv[argc - 1], &pipex);

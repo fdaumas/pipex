@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:22:25 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/05/27 09:55:58 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/27 10:07:29 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	parent_free(t_ppxb *pipex)
 	i = 0;
 	close(pipex->infile);
 	close(pipex->outfile);
-//	while (pipex->cmd_paths[i])
-//	{
-//		free(pipex->cmd_paths[i]);
-//		i++;
-//	}
-//	free(pipex->cmd_paths);
+	while (pipex->cmd_paths[i])
+	{
+		free(pipex->cmd_paths[i]);
+		i++;
+	}
+	free(pipex->cmd_paths);
 	i = 0;
 	while (i < (pipex->pipe_nmbs))
 	{

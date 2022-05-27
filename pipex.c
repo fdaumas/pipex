@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:24:52 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/05/27 04:06:47 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/27 10:00:51 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(int argc, char *argv[], char *envp[])
 	if (!pipex.pipe)
 		msg_error(ERR_PIPE);
 	pipex.env_path = find_path(envp);
-	printf("test1\n");
 	if (pipex.env_path)
 	{
 		pipex.cmd_paths = ft_split(pipex.env_path, ':');

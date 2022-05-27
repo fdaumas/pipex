@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:24:52 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/05/25 14:36:34 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/27 10:00:50 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static void	creat_pipes(t_ppxb *pipex)
 	while (i < pipex->cmd_nmbs - 1)
 	{
 		if (pipe(pipex->pipe + 2 * i) < 0)
+		{
+			msg_error(ERR_PIPE);
 			parent_free(pipex);
+		}
 		i++;
 	}
 }

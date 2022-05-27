@@ -6,11 +6,12 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:22:25 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:26:14 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/27 09:55:58 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/pipex_bonus.h"
+#include <unistd.h>
 
 void	parent_free(t_ppxb *pipex)
 {
@@ -19,13 +20,19 @@ void	parent_free(t_ppxb *pipex)
 	i = 0;
 	close(pipex->infile);
 	close(pipex->outfile);
-	while (pipex->cmd_paths[i])
+//	while (pipex->cmd_paths[i])
+//	{
+//		free(pipex->cmd_paths[i]);
+//		i++;
+//	}
+//	free(pipex->cmd_paths);
+	i = 0;
+	while (i < (pipex->pipe_nmbs))
 	{
-		free(pipex->cmd_paths[i]);
+		close(pipex->pipe[i]);
 		i++;
 	}
-	free(pipex->cmd_paths);
-	free(pipex->pipe);
+	exit(0);
 }
 
 void	child_free(t_ppxb *pipex)
@@ -44,9 +51,16 @@ void	child_free(t_ppxb *pipex)
 
 void	pipe_free(t_ppxb *pipex)
 {
+	int	i;
+
 	close(pipex->infile);
 	close(pipex->outfile);
-	free(pipex->pipe);
+	i = 0;
+	while (i < (pipex->pipe_nmbs))
+	{
+		close(pipex->pipe[i]);
+		i++;
+	}
 	msg(ERR_ENVP);
 	exit(1);
 }

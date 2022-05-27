@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:20:39 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/05/27 04:08:55 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/27 10:10:25 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 char	*find_path(char **envp)
 {
-	int index;
+	int	index;
 
 	index = -1;
 	while (envp[++index] && ft_strncmp("PATH=", *envp, 5))

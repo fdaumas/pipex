@@ -6,7 +6,7 @@
 /*   By: fdaumas <fdaumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:23:39 by fdaumas           #+#    #+#             */
-/*   Updated: 2022/04/05 15:23:56 by fdaumas          ###   ########.fr       */
+/*   Updated: 2022/05/27 04:01:16 by fdaumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char	**ft_split(char const *s, char c)
 	char	*s1;
 	size_t	j;
 
+	if (!s)
+		return (NULL);
 	s1 = ft_strdup(s);
 	if (!s1)
 		return (NULL);
